@@ -1,1 +1,68 @@
-<p>pc-punch-configuration works!</p>
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>Configuration</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="configurationForm" (ngSubmit)="onSubmit()">
+    <!-- Login Type -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Login Type: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="loginType">
+            <mat-option value="Employee # and Card #">Employee # and Card #</mat-option>
+            <mat-option value="Employee #">Employee #</mat-option>
+            <mat-option value="Card #">Card #</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Clock Type -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Clock Type: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="clockType">
+            <mat-option value="In and Out">In and Out</mat-option>
+            <mat-option value="Swipe and Go">Swipe and Go</mat-option>
+            <mat-option value="Swipe and Go (Function Key)">Swipe and Go (Function Key)</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Auto Close -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Auto Close: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="autoClose">
+            <mat-option value="Auto Close Tables After Five Minutes of Inactivity">Auto Close Tables After Five Minutes of Inactivity</mat-option>
+            <mat-option value="Auto Close Tables After Every Transaction">Auto Close Tables After Every Transaction</mat-option>
+            <mat-option value="Never Auto Close Tables">Never Auto Close Tables</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Check Lock-Out Profile -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-checkbox formControlName="checkLockOutProfile">Check Lock-Out Profile</mat-checkbox>
+      </div>
+    </div>
+
+    <div class="submit-button">
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary">
+        Submit
+      </button>
+    </div>
+  </form>
+</mat-card>

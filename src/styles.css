@@ -68,7 +68,7 @@ mat-label {
 }
 
 mat-form-field {
-  width:210px;
+  /* width:210px; */
   margin-bottom: -1.25em;
   padding-bottom: 2%;
 }

@@ -13,6 +13,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 const modules = [
   MatSlideToggleModule,
   MatCardModule,
@@ -24,6 +27,8 @@ const modules = [
   MatSidenavModule,
   MatListModule,
   MatIconModule,
+  MatSelectModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

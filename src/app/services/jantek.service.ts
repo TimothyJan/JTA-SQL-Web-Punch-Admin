@@ -39,4 +39,8 @@ export class JantekService {
       this.isAuthenticatedChange.next(false);
       this._alertService.openSnackBar("Logoff Successful");
     }
+
+  updateConfiguration(form: any) {
+    console.log(form);
+  }
 }

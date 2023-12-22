@@ -10,8 +10,12 @@ import { JantekService } from '../../../services/jantek.service';
 export class NavBarComponent implements OnInit{
   navLinks = [
     { path: '/pc-punch-configuration', label: 'PC Punch Configuration' },
-    { path: '/pc-punch-configuration', label: 'PC Punch Configuration' },
-    { path: '/function-key', label: 'Function Key' },
+    { path: '/function-key', label: 'Function Key 1' },
+    { path: '/function-key', label: 'Function Key 2' },
+    { path: '/function-key', label: 'Function Key 3' },
+    { path: '/function-key', label: 'Function Key 4' },
+    { path: '/function-key', label: 'Function Key 5' },
+    { path: '/function-key', label: 'Function Key 6' }
   ];
   // Sidenav toggle flag
   isSidenavOpen = false;
