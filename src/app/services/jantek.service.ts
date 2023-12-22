@@ -33,4 +33,10 @@ export class JantekService {
     this._alertService.openSnackBar("Incorrect Login");
     return false;
   }
+
+    /** Log Off */
+    logoff() {
+      this.isAuthenticatedChange.next(false);
+      this._alertService.openSnackBar("Logoff Successful");
+    }
 }

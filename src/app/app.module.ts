@@ -16,6 +16,8 @@ import { PcPunchConfigurationComponent } from './components/main-page/pc-punch-c
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoWelcomeComponent } from './components/login-page/logo-welcome/logo-welcome.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
+import { NavBarComponent } from './components/main-page/nav-bar/nav-bar.component';
+import { FunctionKeyComponent } from './components/main-page/function-key/function-key.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LoginFormComponent } from './components/login-page/login-form/login-for
     PcPunchConfigurationComponent,
     FooterComponent,
     LogoWelcomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    NavBarComponent,
+    FunctionKeyComponent
   ],
   imports: [
     BrowserModule,
