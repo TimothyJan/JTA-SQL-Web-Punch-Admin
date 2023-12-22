@@ -1,0 +1,12 @@
+
+<div *ngIf="isAuthenticated; else loginBlock">
+  <app-pc-punch-configuration></app-pc-punch-configuration>
+</div>
+
+<ng-template #loginBlock>
+  <div class="padding">
+    <app-login-page></app-login-page>
+  </div>
+</ng-template>
+
+<app-footer></app-footer>
