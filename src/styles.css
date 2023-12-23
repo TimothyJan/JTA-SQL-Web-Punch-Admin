@@ -24,14 +24,14 @@ body, html {
   column-gap: 5%;
 }
 
-@media screen and (max-width: 790px) {
+/* @media screen and (max-width: 790px) {
   .flex-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: start;
+    justify-content: center;
     column-gap: 10px;
   }
-}
+} */
 
 .flex-item {
   padding: 1%;

@@ -11,7 +11,7 @@ const routes: Routes = [
   // redirect to `home` if there is no path
   {
     path: '',
-    redirectTo: 'pc-punch-configuration',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];

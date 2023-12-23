@@ -43,4 +43,8 @@ export class JantekService {
   updateConfiguration(form: any) {
     console.log(form);
   }
+
+  functionKeyUpdate(form: any) {
+    console.log(form);
+  }
 }
