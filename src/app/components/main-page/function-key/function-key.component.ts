@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JantekService } from '../../../services/jantek.service';
 
@@ -7,11 +7,12 @@ import { JantekService } from '../../../services/jantek.service';
   templateUrl: './function-key.component.html',
   styleUrl: './function-key.component.css'
 })
-export class FunctionKeyComponent {
+export class FunctionKeyComponent implements OnInit{
 
   @Input() functionKeyNumber: number = 0;
 
   functionKeyForm = new FormGroup({
+    functionKeyNumber: new FormControl(0, Validators.required),
     FKType: new FormControl("1", Validators.required),
     functionKeyCaption: new FormControl("None", Validators.required),
     message1: new FormControl({value: "", disabled: true}, [Validators.required]),
@@ -21,8 +22,12 @@ export class FunctionKeyComponent {
   });
 
   constructor(
-    private _jantekService: JantekService
+    private _jantekService: JantekService,
   ) {}
+
+  ngOnInit(): void {
+    this.functionKeyForm.controls["functionKeyNumber"].setValue(this.functionKeyNumber);
+  }
 
   typeChanged(event: any) {
     this.clearMessagesAndPayCode();

@@ -18,6 +18,12 @@ import { LogoWelcomeComponent } from './components/login-page/logo-welcome/logo-
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
 import { NavBarComponent } from './components/main-page/nav-bar/nav-bar.component';
 import { FunctionKeyComponent } from './components/main-page/function-key/function-key.component';
+import { FunctionKey1Component } from './components/main-page/function-key-1/function-key-1.component';
+import { FunctionKey2Component } from './components/main-page/function-key-2/function-key-2.component';
+import { FunctionKey3Component } from './components/main-page/function-key-3/function-key-3.component';
+import { FunctionKey4Component } from './components/main-page/function-key-4/function-key-4.component';
+import { FunctionKey5Component } from './components/main-page/function-key-5/function-key-5.component';
+import { FunctionKey6Component } from './components/main-page/function-key-6/function-key-6.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { FunctionKeyComponent } from './components/main-page/function-key/functi
     LogoWelcomeComponent,
     LoginFormComponent,
     NavBarComponent,
-    FunctionKeyComponent
+    FunctionKeyComponent,
+    FunctionKey1Component,
+    FunctionKey2Component,
+    FunctionKey3Component,
+    FunctionKey4Component,
+    FunctionKey5Component,
+    FunctionKey6Component
   ],
   imports: [
     BrowserModule,

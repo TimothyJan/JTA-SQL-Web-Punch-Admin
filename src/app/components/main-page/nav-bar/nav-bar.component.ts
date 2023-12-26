@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JantekService } from '../../../services/jantek.service';
+import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,12 +11,12 @@ import { JantekService } from '../../../services/jantek.service';
 export class NavBarComponent implements OnInit{
   navLinks = [
     { path: '/pc-punch-configuration', label: 'PC Punch Configuration' },
-    { path: '/function-key', label: 'Function Key 1' },
-    { path: '/function-key', label: 'Function Key 2' },
-    { path: '/function-key', label: 'Function Key 3' },
-    { path: '/function-key', label: 'Function Key 4' },
-    { path: '/function-key', label: 'Function Key 5' },
-    { path: '/function-key', label: 'Function Key 6' }
+    { path: '/function-key-1', label: 'Function Key 1' },
+    { path: '/function-key-2', label: 'Function Key 2' },
+    { path: '/function-key-3', label: 'Function Key 3' },
+    { path: '/function-key-4', label: 'Function Key 4' },
+    { path: '/function-key-5', label: 'Function Key 5' },
+    { path: '/function-key-6', label: 'Function Key 6' }
   ];
   // Sidenav toggle flag
   isSidenavOpen = false;

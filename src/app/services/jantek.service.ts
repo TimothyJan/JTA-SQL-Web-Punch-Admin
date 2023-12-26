@@ -42,9 +42,11 @@ export class JantekService {
 
   updateConfiguration(form: any) {
     console.log(form);
+    this._alertService.openSnackBar("Configuration Saved!");
   }
 
   functionKeyUpdate(form: any) {
     console.log(form);
+    this._alertService.openSnackBar(`Function Key ${form['functionKeyNumber']} Saved!`);
   }
 }
