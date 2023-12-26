@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JantekService } from '../../../services/jantek.service';
-import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,7 +18,7 @@ export class NavBarComponent implements OnInit{
     { path: '/function-key-6', label: 'Function Key 6' }
   ];
   // Sidenav toggle flag
-  isSidenavOpen = false;
+  isSidenavOpen:boolean = false;
 
   constructor(
     private router: Router,
@@ -47,7 +46,16 @@ export class NavBarComponent implements OnInit{
   /** HostListener to update the flag on window resize */
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.closeSideNav();
+    // this.closeSideNav();
+  }
+
+  isLargeScreen() {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (width > 720) {
+        return true;
+    } else {
+        return false;
+    }
   }
 
   logoff() {
