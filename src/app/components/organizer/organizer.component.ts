@@ -7,7 +7,7 @@ import { JantekService } from '../../services/jantek.service';
   styleUrl: './organizer.component.css'
 })
 export class OrganizerComponent implements OnInit{
-  isAuthenticated: boolean = true;
+  isAuthenticated: boolean = false;
   _authSubscription: any;
 
   constructor(
@@ -18,8 +18,6 @@ export class OrganizerComponent implements OnInit{
     this._authSubscription = this._jantekService.isAuthenticatedChange.subscribe((value) => {
       this.isAuthenticated = value;
     });
-    // For testing purposes
-    // this.isAuthenticated = this._jantekService.isAuthenticated;
   }
 
   ngOnDestroy() {
