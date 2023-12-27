@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { PunchConfig } from '../models/punch-config';
+import { FunctionKey } from '../models/function-key';
 
 const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 
@@ -11,7 +12,7 @@ const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 })
 export class JantekService {
   isAuthenticatedChange: Subject<boolean> = new Subject<boolean>();
-  punchConfiguration: PunchConfig | undefined = {
+  punchConfiguration: PunchConfig = {
     "status": "OK",
     "logintype": 1,
     "clocktype": 1,
@@ -103,27 +104,27 @@ export class JantekService {
   }
 
   /** Https request to get punch configuration from server */
-  getPunchConfiguration() {
+  getPunchConfiguration(): Observable<PunchConfig> {
     return this.http.get<PunchConfig>(`${apiRoot}/swp_getpunchcfg.asp`);
   }
 
   /** Return current Login Type */
-  getLoginType() {
+  getLoginType(): number|undefined {
     return this.punchConfiguration?.logintype;
   }
 
   /** Returns current Clock Type */
-  getClockType() {
+  getClockType(): number|undefined {
     return this.punchConfiguration?.clocktype;
   }
 
   /** Returns current Auto Close type */
-  getCloseTable() {
+  getCloseTable(): number|undefined {
     return this.punchConfiguration?.closetable;
   }
 
   /** Returns current Check Lock-Out Profile */
-  getCheckLo() {
+  getCheckLo(): number|undefined {
     return this.punchConfiguration?.checklo;
   }
 
@@ -133,8 +134,34 @@ export class JantekService {
     this._alertService.openSnackBar("Configuration Saved!");
   }
 
-  getFK1() {
-    return this.punchConfiguration?.fk1;
+  /** Returns fk1 */
+  getFK1(): FunctionKey {
+    return this.punchConfiguration.fk1;
+  }
+
+  /** Returns fk2 */
+  getFK2(): FunctionKey {
+    return this.punchConfiguration.fk2;
+  }
+
+  /** Returns fk3 */
+  getFK3(): FunctionKey {
+    return this.punchConfiguration.fk3;
+  }
+
+  /** Returns fk4 */
+  getFK4(): FunctionKey {
+    return this.punchConfiguration.fk4;
+  }
+
+  /** Returns fk5 */
+  getFK5(): FunctionKey {
+    return this.punchConfiguration.fk5;
+  }
+
+  /** Returns fk6 */
+  getFK6(): FunctionKey {
+    return this.punchConfiguration.fk6;
   }
 
   /** Https request to post function key update */

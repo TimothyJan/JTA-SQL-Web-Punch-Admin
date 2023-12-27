@@ -10,27 +10,27 @@
         <mat-label>Type: </mat-label>
         <br>
         <mat-form-field>
-          <mat-select formControlName="FKType" (selectionChange)="typeChanged($event.value)">
-            <mat-option value="1">None</mat-option>
-            <mat-option value="2">IN</mat-option>
-            <mat-option value="3">OUT</mat-option>
-            <mat-option value="4">Swipe and Go and Level 3</mat-option>
-            <mat-option value="5">Level 1</mat-option>
-            <mat-option value="6">Level 2</mat-option>
-            <mat-option value="7">Level 3</mat-option>
-            <mat-option value="8">Level 1 and 2</mat-option>
-            <mat-option value="9">Level 1 and 3</mat-option>
-            <mat-option value="10">Level 2 and 3</mat-option>
-            <mat-option value="11">Level 1 2 and 3</mat-option>
-            <mat-option value="12">Break Start</mat-option>
-            <mat-option value="13">Break End</mat-option>
-            <mat-option value="14">Lunch Start</mat-option>
-            <mat-option value="15">Lunch End</mat-option>
-            <mat-option value="16">Hour Entry</mat-option>
-            <mat-option value="17">Amount Entry</mat-option>
-            <mat-option value="18">View Last Punch</mat-option>
-            <mat-option value="19">View Total Hours</mat-option>
-            <mat-option value="20">Calculated Pay Code</mat-option>
+          <mat-select formControlName="fktype" (selectionChange)="typeChanged($event.value)">
+            <mat-option [value]=1>None</mat-option>
+            <mat-option [value]=2>IN</mat-option>
+            <mat-option [value]=3>OUT</mat-option>
+            <mat-option [value]=4>Swipe and Go and Level 3</mat-option>
+            <mat-option [value]=5>Level 1</mat-option>
+            <mat-option [value]=6>Level 2</mat-option>
+            <mat-option [value]=7>Level 3</mat-option>
+            <mat-option [value]=8>Level 1 and 2</mat-option>
+            <mat-option [value]=9>Level 1 and 3</mat-option>
+            <mat-option [value]=10>Level 2 and 3</mat-option>
+            <mat-option [value]=11>Level 1 2 and 3</mat-option>
+            <mat-option [value]=12>Break Start</mat-option>
+            <mat-option [value]=13>Break End</mat-option>
+            <mat-option [value]=14>Lunch Start</mat-option>
+            <mat-option [value]=15>Lunch End</mat-option>
+            <mat-option [value]=16>Hour Entry</mat-option>
+            <mat-option [value]=17>Amount Entry</mat-option>
+            <mat-option [value]=18>View Last Punch</mat-option>
+            <mat-option [value]=19>View Total Hours</mat-option>
+            <mat-option [value]=20>Calculated Pay Code</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -39,13 +39,13 @@
     <div class="flex-container">
       <!-- Function Key Caption -->
       <div class="flex-item">
-        <mat-label>Function Key Caption</mat-label>
+        <mat-label>Function Key Caption: </mat-label>
         <br>
         <mat-form-field>
-          <input matInput formControlName="functionKeyCaption">
+          <input matInput formControlName="caption">
         </mat-form-field>
-        <div *ngIf="(functionKeyForm.controls['functionKeyCaption'].dirty || functionKeyForm.controls['functionKeyCaption'].touched)">
-          <div *ngIf="functionKeyForm.controls['functionKeyCaption'].errors?.['required']">
+        <div *ngIf="(functionKeyForm.controls['caption'].dirty || functionKeyForm.controls['caption'].touched)">
+          <div *ngIf="functionKeyForm.controls['caption'].errors?.['required']">
             <mat-error>Function Key Caption is required.</mat-error>
           </div>
         </div>
@@ -55,13 +55,13 @@
     <div class="flex-container">
       <!-- Message #1 -->
       <div class="flex-item">
-        <mat-label>Message #1</mat-label>
+        <mat-label>Message #1: </mat-label>
         <br>
         <mat-form-field>
-          <input matInput formControlName="message1">
+          <input matInput formControlName="msg1">
         </mat-form-field>
-        <div *ngIf="(functionKeyForm.controls['message1'].dirty || functionKeyForm.controls['message1'].touched)">
-          <div *ngIf="functionKeyForm.controls['message1'].errors?.['required']">
+        <div *ngIf="(functionKeyForm.controls['msg1'].dirty || functionKeyForm.controls['msg1'].touched)">
+          <div *ngIf="functionKeyForm.controls['msg1'].errors?.['required']">
             <mat-error>Message #1 is required.</mat-error>
           </div>
         </div>
@@ -71,13 +71,13 @@
     <div class="flex-container">
       <!-- Message #2 -->
       <div class="flex-item">
-        <mat-label>Message #2</mat-label>
+        <mat-label>Message #2: </mat-label>
         <br>
         <mat-form-field>
-          <input matInput formControlName="message2">
+          <input matInput formControlName="msg2">
         </mat-form-field>
-        <div *ngIf="(functionKeyForm.controls['message2'].dirty || functionKeyForm.controls['message2'].touched)">
-          <div *ngIf="functionKeyForm.controls['message2'].errors?.['required']">
+        <div *ngIf="(functionKeyForm.controls['msg2'].dirty || functionKeyForm.controls['msg2'].touched)">
+          <div *ngIf="functionKeyForm.controls['msg2'].errors?.['required']">
             <mat-error>Message #2 is required.</mat-error>
           </div>
         </div>
@@ -87,13 +87,29 @@
     <div class="flex-container">
       <!-- Message #3 -->
       <div class="flex-item">
-        <mat-label>Message #3</mat-label>
+        <mat-label>Message #3: </mat-label>
         <br>
         <mat-form-field>
-          <input matInput formControlName="message3">
+          <input matInput formControlName="msg3">
         </mat-form-field>
-        <div *ngIf="(functionKeyForm.controls['message3'].dirty || functionKeyForm.controls['message3'].touched)">
-          <div *ngIf="functionKeyForm.controls['message3'].errors?.['required']">
+        <div *ngIf="(functionKeyForm.controls['msg3'].dirty || functionKeyForm.controls['msg3'].touched)">
+          <div *ngIf="functionKeyForm.controls['msg3'].errors?.['required']">
+            <mat-error>Message #3 is required.</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-container">
+      <!-- Pay Code -->
+      <div class="flex-item">
+        <mat-label>Pay Code: </mat-label>
+        <br>
+        <mat-form-field>
+          <input matInput formControlName="PC">
+        </mat-form-field>
+        <div *ngIf="(functionKeyForm.controls['PC'].dirty || functionKeyForm.controls['PC'].touched)">
+          <div *ngIf="functionKeyForm.controls['PC'].errors?.['required']">
             <mat-error>Message #3 is required.</mat-error>
           </div>
         </div>
