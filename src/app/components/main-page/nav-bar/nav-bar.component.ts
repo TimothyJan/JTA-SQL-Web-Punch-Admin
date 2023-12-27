@@ -46,7 +46,7 @@ export class NavBarComponent implements OnInit{
   /** HostListener to update the flag on window resize */
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    // this.closeSideNav();
+    this.closeSideNav();
   }
 
   isLargeScreen() {
