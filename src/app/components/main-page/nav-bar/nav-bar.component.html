@@ -1,9 +1,9 @@
 <mat-toolbar color="secondary">
-    <div class = "logo">
-      <img src="assets/images/Jantek-Logo.png" alt="Jantek-Logo">
-    </div>
+  <div class = "logo">
+    <img src="assets/images/Jantek-Logo.png" alt="Jantek-Logo">
+  </div>
 
-  <button *ngIf="!isLargeScreen()" mat-icon-button (click)="toggleSidenav()">
+  <button *ngIf="!isLargeScreen()" mat-icon-button (click)="toggleSidenav()" class="burger-menu">
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
