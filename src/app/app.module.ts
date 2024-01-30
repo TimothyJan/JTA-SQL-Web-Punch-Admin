@@ -24,6 +24,7 @@ import { FunctionKey3Component } from './components/main-page/function-key-3/fun
 import { FunctionKey4Component } from './components/main-page/function-key-4/function-key-4.component';
 import { FunctionKey5Component } from './components/main-page/function-key-5/function-key-5.component';
 import { FunctionKey6Component } from './components/main-page/function-key-6/function-key-6.component';
+import { PayCodeDialogComponent } from './components/main-page/pay-code-dialog/pay-code-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FunctionKey6Component } from './components/main-page/function-key-6/fun
     FunctionKey3Component,
     FunctionKey4Component,
     FunctionKey5Component,
-    FunctionKey6Component
+    FunctionKey6Component,
+    PayCodeDialogComponent
   ],
   imports: [
     BrowserModule,

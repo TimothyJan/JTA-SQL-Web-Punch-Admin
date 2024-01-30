@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
 import { Observable, Subject } from 'rxjs';
 import { PunchConfig } from '../models/punch-config';
 import { FunctionKey } from '../models/function-key';
+import { PayCode } from '../models/pay-code';
+import { PCList } from '../models/pc-list';
 
 const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 
@@ -47,28 +49,28 @@ export class JantekService {
       "PC": 0
     },
     "fk4": {
-      "fktype": 6,
-      "caption": "Branch Change",
-      "msg1": "Enter Branch",
+      "fktype": 16,
+      "caption": "Hour Entry",
+      "msg1": "Enter Hour",
       "msg2": "",
       "msg3": "",
-      "PC": 0
+      "PC": 1
     },
     "fk5": {
-      "fktype": 7,
-      "caption": "Dept Change",
-      "msg1": "Enter Department",
-      "msg2": "",
-      "msg3": "",
-      "PC": 0
-    },
-    "fk6": {
       "fktype": 17,
       "caption": "Tip Entry",
-      "msg1": "Enter Tip",
+      "msg1": "",
       "msg2": "",
       "msg3": "",
       "PC": 7
+    },
+    "fk6": {
+      "fktype": 20,
+      "caption": "Calculated Pay Code",
+      "msg1": "",
+      "msg2": "",
+      "msg3": "",
+      "PC": 24
     }
   };
 
@@ -88,9 +90,9 @@ export class JantekService {
       this.isAuthenticatedChange.next(true);
       this._alertService.openSnackBar("Login Successful");
       // get punch configuration
-      this.getPunchConfiguration().subscribe(
-        data => this.punchConfiguration = { ...data}
-      );
+      // this.getPunchConfiguration().subscribe(
+      //   data => this.punchConfiguration = { ...data}
+      // );
       return true;
     }
     this._alertService.openSnackBar("Incorrect Login");
@@ -106,6 +108,52 @@ export class JantekService {
   /** Https request to get punch configuration from server */
   getPunchConfiguration(): Observable<PunchConfig> {
     return this.http.get<PunchConfig>(`${apiRoot}/swp_getpunchcfg.asp`);
+  }
+
+  /** Https request to get list of pay codes */
+  getPayCodes(fktype: number): Observable<PCList> {
+    switch(fktype) {
+      case 16: {
+        const options = {
+          params: {
+            Company: "TIMOTHYPROJECT",
+            pctype: "HNC",
+            order:1,
+            startloc:1,
+            listsize:100
+          }
+        };
+        return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp`, options);
+      }
+      case 17: {
+        const options = {
+          params: {
+            Company: "TIMOTHYPROJECT",
+            pctype: "ED",
+            order:1,
+            startloc:1,
+            listsize:100
+          }
+        };
+        return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp`, options);
+      }
+      case 20: {
+        const options = {
+          params: {
+            Company: "TIMOTHYPROJECT",
+            pctype: "HC",
+            order:1,
+            startloc:1,
+            listsize:100
+          }
+        };
+        return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp`, options);
+      }
+      default: {
+        console.log("switch default");
+        return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp?Company=TIMOTHYJANPROJECT&pctype=HNC&order=1&startloc=1&listsize=100`);
+      }
+    }
   }
 
   /** Return current Login Type */

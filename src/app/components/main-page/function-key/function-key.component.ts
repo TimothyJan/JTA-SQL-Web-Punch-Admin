@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JantekService } from '../../../services/jantek.service';
 import { FunctionKey } from '../../../models/function-key';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PayCodeDialogComponent } from '../pay-code-dialog/pay-code-dialog.component';
 
 @Component({
   selector: 'app-function-key',
@@ -32,6 +34,7 @@ export class FunctionKeyComponent implements OnInit{
 
   constructor(
     private _jantekService: JantekService,
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +59,7 @@ export class FunctionKeyComponent implements OnInit{
     }
   }
 
-  typeChanged(event: any) {
+  typeChanged(event: any): void {
     this.clearMessagesAndPayCode();
     switch(event) {
       case 0: /** None */
@@ -209,14 +212,37 @@ export class FunctionKeyComponent implements OnInit{
     }
   }
 
-  clearMessagesAndPayCode() {
+  clearMessagesAndPayCode(): void {
     this.functionKeyForm.controls["msg1"].reset();
     this.functionKeyForm.controls["msg2"].reset();
     this.functionKeyForm.controls["msg3"].reset();
     this.functionKeyForm.controls["PC"].reset();
   }
 
-  onSubmit() {
+  openPayCodeDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      fktype: this.fk.fktype,
+      currentPayCode: this.fk.PC
+    };
+
+    // this._dialog.open(PayCodeDialogComponent, dialogConfig);
+
+    const dialogRef = this._dialog.open(PayCodeDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        this.functionKeyForm.controls["PC"].setValue(data[0]);
+      }
+
+    );
+  }
+
+  onSubmit(): void {
     if (this.functionKeyForm.valid) {
       this._jantekService.functionKeyUpdate(this.functionKeyForm.value);
     }

@@ -105,12 +105,19 @@
       <div class="flex-item">
         <mat-label>Pay Code: </mat-label>
         <br>
-        <mat-form-field>
+        <mat-form-field class="paycode">
           <input matInput formControlName="PC">
         </mat-form-field>
+        <button
+          mat-icon-button color="primary"
+          type="button"
+          (click)="openPayCodeDialog()"
+          aria-label="Pay Code Search">
+          <mat-icon>search</mat-icon>
+        </button>
         <div *ngIf="(functionKeyForm.controls['PC'].dirty || functionKeyForm.controls['PC'].touched)">
           <div *ngIf="functionKeyForm.controls['PC'].errors?.['required']">
-            <mat-error>Message #3 is required.</mat-error>
+            <mat-error>Pay Code is required.</mat-error>
           </div>
         </div>
       </div>
