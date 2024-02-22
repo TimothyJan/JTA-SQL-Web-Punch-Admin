@@ -59,6 +59,7 @@ export class FunctionKeyComponent implements OnInit{
     }
   }
 
+  /** When type is changed, controls are enabled/disabled */
   typeChanged(event: any): void {
     this.clearMessagesAndPayCode();
     switch(event) {
@@ -212,6 +213,7 @@ export class FunctionKeyComponent implements OnInit{
     }
   }
 
+  /** Resets messages and paycode controls  */
   clearMessagesAndPayCode(): void {
     this.functionKeyForm.controls["msg1"].reset();
     this.functionKeyForm.controls["msg2"].reset();
@@ -219,6 +221,7 @@ export class FunctionKeyComponent implements OnInit{
     this.functionKeyForm.controls["PC"].reset();
   }
 
+  /** Opens PayCode dialog and passes fktype and current PayCode to dialog component */
   openPayCodeDialog(): void {
     const dialogConfig = new MatDialogConfig();
 
@@ -227,10 +230,11 @@ export class FunctionKeyComponent implements OnInit{
 
     dialogConfig.data = {
       fktype: this.fk.fktype,
-      currentPayCode: this.fk.PC
+      currentPayCode: this.fk.PC,
+      width: '50%'
     };
 
-    // this._dialog.open(PayCodeDialogComponent, dialogConfig);
+    // const dialogRef = this._dialog.open(PayCodeDialogComponent, dialogConfig);
 
     const dialogRef = this._dialog.open(PayCodeDialogComponent, dialogConfig);
 
@@ -242,6 +246,7 @@ export class FunctionKeyComponent implements OnInit{
     );
   }
 
+  /**  */
   onSubmit(): void {
     if (this.functionKeyForm.valid) {
       this._jantekService.functionKeyUpdate(this.functionKeyForm.value);

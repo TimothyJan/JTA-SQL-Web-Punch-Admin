@@ -59,10 +59,10 @@ export class JantekService {
     "fk5": {
       "fktype": 17,
       "caption": "Tip Entry",
-      "msg1": "",
+      "msg1": "Enter Tip",
       "msg2": "",
       "msg3": "",
-      "PC": 7
+      "PC": 30
     },
     "fk6": {
       "fktype": 20,

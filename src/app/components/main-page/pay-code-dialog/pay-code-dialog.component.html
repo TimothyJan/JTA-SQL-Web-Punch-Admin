@@ -1,40 +1,25 @@
+
 <mat-card>
+
   <mat-card-header class="title-center">
     <mat-card-title>Pay Code List</mat-card-title>
   </mat-card-header>
 
   <mat-dialog-content>
-    <mat-selection-list #payCodes [multiple]="false" [(ngModel)]="payCodeSelected" (ngModelChange)="onPayCodeDialogChange($event)">
-        <mat-list-option *ngFor="let payCode of payCodeList, let i = index" [selected]="payCode && i==0" [value]="payCode.payCode">
-          {{payCode.payCode}} - {{payCode.description}}
+    <div *ngIf="payCodeList; else payCodeLoadingBlock">
+      <mat-selection-list #payCodes [multiple]="false" [(ngModel)]="payCodeSelected">
+        <mat-list-option *ngFor="let payCodeNum of payCodeNumList, let i = index" [selected]="i==0" [value]="payCodeNum">
+          {{ payCodeNum }} - {{ payCodeList[i].description }}
         </mat-list-option>
-    </mat-selection-list>
-
+      </mat-selection-list>
+    </div>
+    <ng-template #payCodeLoadingBlock>
+      Loading...
+    </ng-template>
   </mat-dialog-content>
 
   <button mat-raised-button type="submit" color="primary" (click)="savePayCodeDialog()">Save</button>
   <button mat-raised-button type="button" color="primary" (click)="closePayCodeDialog()">Close</button>
 
 </mat-card>
-
-<!-- <mat-card [formGroup]="payCodeForm">
-  <mat-card-header class="title-center">
-    <mat-card-title>Pay Code List</mat-card-title>
-  </mat-card-header>
-
-  <mat-dialog-content>
-    <mat-selection-list #payCodes [multiple]="false" formControlName="payCode">
-      @for (payCode of payCodeList; track payCode) {
-        <mat-list-option [value]="payCode">
-          {{payCode.payCode}} - {{payCode.description}}
-        </mat-list-option>
-      }
-    </mat-selection-list>
-
-  </mat-dialog-content>
-
-  <button mat-raised-button type="submit" color="primary" (click)="savePayCodeDialog()">Save</button>
-  <button mat-raised-button type="button" color="primary" (click)="closePayCodeDialog()">Close</button>
-
-</mat-card> -->
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PayCode } from '../../../models/pay-code';
 import { JantekService } from '../../../services/jantek.service';
@@ -11,7 +11,8 @@ import { JantekService } from '../../../services/jantek.service';
 export class PayCodeDialogComponent implements OnInit{
 
   payCodeSelected: number = 0;
-  payCodeList: PayCode[] = [];
+  payCodeList: PayCode[] = [new PayCode(0, "None")];
+  payCodeNumList: number[] = [0];
 
   constructor(
     private _jantekService: JantekService,
@@ -25,17 +26,21 @@ export class PayCodeDialogComponent implements OnInit{
     this._jantekService.getPayCodes(this.data.fktype).subscribe(
       data => {
         for(var index = 0; index<data["list"].length; index++) {
+          // Push Paycode num and descprition
           let newPayCode = new PayCode(data["list"][index][0], data["list"][index][1]);
           this.payCodeList.push(newPayCode);
+
+          // Push Paycode num list for easier selection in matlistoption
+          this.payCodeNumList.push(data["list"][index][0]);
         }
       }
     );
   }
 
   /** Dialog selection */
-  onPayCodeDialogChange(event:any) {
-    console.log(event[0]);
-  }
+  // onPayCodeDialogChange(event:any) {
+  //   // console.log(event);
+  // }
 
   /** Send selected pay code data to function-key */
   savePayCodeDialog(): void {
