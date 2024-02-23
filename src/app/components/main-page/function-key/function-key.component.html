@@ -109,6 +109,7 @@
           <input matInput formControlName="PC">
         </mat-form-field>
         <button
+          [disabled]="payCodeSearchDisabled"
           mat-icon-button color="primary"
           type="button"
           (click)="openPayCodeDialog()"

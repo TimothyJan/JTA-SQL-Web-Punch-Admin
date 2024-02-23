@@ -21,12 +21,14 @@ export class PayCodeDialogComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    /**  */
+    this._dialogRef.updateSize('50%');
     /** data injected gives "fktype" and "currentPayCode" currently selected */
     // Load list of pay codes into payCodeList
     this._jantekService.getPayCodes(this.data.fktype).subscribe(
       data => {
         for(var index = 0; index<data["list"].length; index++) {
-          // Push Paycode num and descprition
+          // Push Paycode num and description
           let newPayCode = new PayCode(data["list"][index][0], data["list"][index][1]);
           this.payCodeList.push(newPayCode);
 

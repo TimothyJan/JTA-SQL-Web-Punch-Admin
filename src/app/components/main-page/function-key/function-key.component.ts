@@ -11,6 +11,7 @@ import { PayCodeDialogComponent } from '../pay-code-dialog/pay-code-dialog.compo
   styleUrl: './function-key.component.css'
 })
 export class FunctionKeyComponent implements OnInit{
+  payCodeSearchDisabled: boolean = true;
 
   @Input() functionKeyNumber: number = 0;
   @Input() fk:FunctionKey = {
@@ -54,7 +55,7 @@ export class FunctionKeyComponent implements OnInit{
       this.functionKeyForm.controls["msg3"].setValue(this.fk["msg3"]);
     }
     if(this.fk["PC"]) {
-      this.functionKeyForm.controls["PC"].enable();
+      this.enablePayCode()
       this.functionKeyForm.controls["PC"].setValue(this.fk["PC"]);
     }
   }
@@ -68,149 +69,159 @@ export class FunctionKeyComponent implements OnInit{
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 1: /** None */
         this.functionKeyForm.controls["caption"].setValue("None");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 2: /** In */
         this.functionKeyForm.controls["caption"].setValue("IN");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 3: /** Out */
         this.functionKeyForm.controls["caption"].setValue("OUT");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 4: /** Swipe-and-go w/ L3 Change */
         this.functionKeyForm.controls["caption"].setValue("Swipe-and-go w/ L3 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 5: /** L1 Change */
         this.functionKeyForm.controls["caption"].setValue("L1 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 6: /** L2 Change */
         this.functionKeyForm.controls["caption"].setValue("L2 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 7: /** L3 Change */
         this.functionKeyForm.controls["caption"].setValue("L3 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 8: /** L1, L2 Change */
         this.functionKeyForm.controls["caption"].setValue("L1, L2 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].enable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 9: /** L1, L3 Change */
         this.functionKeyForm.controls["caption"].setValue("L1, L3 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].enable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 10: /** L2, L3 Change */
         this.functionKeyForm.controls["caption"].setValue("L2, L3 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].enable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 11: /** L1, L2, L3 change */
         this.functionKeyForm.controls["caption"].setValue("L1, L2, L3 change");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].enable();
         this.functionKeyForm.controls["msg3"].enable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 12: /** Break Start */
         this.functionKeyForm.controls["caption"].setValue("Break Start");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 13: /** Break End */
         this.functionKeyForm.controls["caption"].setValue("Break End");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 14: /** Lunch Start */
         this.functionKeyForm.controls["caption"].setValue("Lunch Start");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 15: /** Lunch End */
         this.functionKeyForm.controls["caption"].setValue("Lunch End");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 16: /** Hour Entry */
         this.functionKeyForm.controls["caption"].setValue("Hour Entry");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].enable();
+        this.enablePayCode()
         break;
       case 17: /** Amount Entry */
         this.functionKeyForm.controls["caption"].setValue("Amount Entry");
         this.functionKeyForm.controls["msg1"].enable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].enable();
+        this.enablePayCode()
         break;
       case 18: /** View Last Punch */
         this.functionKeyForm.controls["caption"].setValue("View Last Punch");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 19: /** View Total Hours */
         this.functionKeyForm.controls["caption"].setValue("View Total Hours");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].disable();
+        this.disablePayCode()
         break;
       case 20: /** Calculated Pay Code */
         this.functionKeyForm.controls["caption"].setValue("Calculated Pay Code");
         this.functionKeyForm.controls["msg1"].disable();
         this.functionKeyForm.controls["msg2"].disable();
         this.functionKeyForm.controls["msg3"].disable();
-        this.functionKeyForm.controls["PC"].enable();
+        this.enablePayCode()
         break;
     }
+  }
+
+  enablePayCode(): void {
+    this.functionKeyForm.controls["PC"].enable();
+    this.payCodeSearchDisabled = false;
+  }
+
+  disablePayCode(): void {
+    this.functionKeyForm.controls["PC"].disable();
+    this.payCodeSearchDisabled = true;
   }
 
   /** Resets messages and paycode controls  */
@@ -230,11 +241,8 @@ export class FunctionKeyComponent implements OnInit{
 
     dialogConfig.data = {
       fktype: this.fk.fktype,
-      currentPayCode: this.fk.PC,
-      width: '50%'
+      currentPayCode: this.fk.PC
     };
-
-    // const dialogRef = this._dialog.open(PayCodeDialogComponent, dialogConfig);
 
     const dialogRef = this._dialog.open(PayCodeDialogComponent, dialogConfig);
 
@@ -242,7 +250,6 @@ export class FunctionKeyComponent implements OnInit{
       data => {
         this.functionKeyForm.controls["PC"].setValue(data[0]);
       }
-
     );
   }
 
