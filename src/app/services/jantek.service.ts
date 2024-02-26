@@ -6,6 +6,7 @@ import { PunchConfig } from '../models/punch-config';
 import { FunctionKey } from '../models/function-key';
 import { PayCode } from '../models/pay-code';
 import { PCList } from '../models/pc-list';
+import { LevelList } from '../models/level-list';
 
 const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 
@@ -154,6 +155,45 @@ export class JantekService {
         return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp?Company=TIMOTHYJANPROJECT&pctype=HNC&order=1&startloc=1&listsize=100`);
       }
     }
+  }
+
+  /** Https request to get list of level 1 codes */
+  getLevel1Codes(): Observable<LevelList> {
+    const options = {
+      params: {
+        Company: "TIMOTHYPROJECT",
+        order:1,
+        startloc:1,
+        listsize:100
+      }
+    };
+    return this.http.get<PCList>(`${apiRoot}/swp_GetL1List.asp`, options);
+  }
+
+  /** Https request to get list of level 1 codes */
+  getLevel2Codes(): Observable<LevelList> {
+    const options = {
+      params: {
+        Company: "TIMOTHYPROJECT",
+        order:1,
+        startloc:1,
+        listsize:100
+      }
+    };
+    return this.http.get<PCList>(`${apiRoot}/swp_GetL2List.asp`, options);
+  }
+
+  /** Https request to get list of level 1 codes */
+  getLevel3Codes(): Observable<LevelList> {
+    const options = {
+      params: {
+        Company: "TIMOTHYPROJECT",
+        order:1,
+        startloc:1,
+        listsize:100
+      }
+    };
+    return this.http.get<PCList>(`${apiRoot}/swp_GetL3List.asp`, options);
   }
 
   /** Return current Login Type */
