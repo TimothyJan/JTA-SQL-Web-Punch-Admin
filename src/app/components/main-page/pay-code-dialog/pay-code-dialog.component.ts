@@ -14,6 +14,7 @@ export class PayCodeDialogComponent implements OnInit{
   payCodeList: PayCode[] = [new PayCode(0, "None")];
   payCodeNumList: number[] = [0];
 
+  /** data injected gives "fktype" and "currentPayCode" currently selected */
   constructor(
     private _jantekService: JantekService,
     private _dialogRef: MatDialogRef<PayCodeDialogComponent>,
@@ -22,9 +23,7 @@ export class PayCodeDialogComponent implements OnInit{
 
   ngOnInit(): void {
     this._dialogRef.updateSize('50%');
-    console.log(this.data.fktype);
 
-    /** data injected gives "fktype" and "currentPayCode" currently selected */
     // Load list of pay codes into payCodeList
     this._jantekService.getPayCodes(this.data.fktype).subscribe(
       data => {
@@ -52,6 +51,6 @@ export class PayCodeDialogComponent implements OnInit{
 
   /** Close dialog */
   closePayCodeDialog(): void {
-    this._dialogRef.close();
+    this._dialogRef.close(this.data.currentPayCode);
   }
 }
