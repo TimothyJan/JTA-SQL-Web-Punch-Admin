@@ -240,7 +240,7 @@ export class FunctionKeyComponent implements OnInit{
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      fktype: this.fk.fktype,
+      fktype: this.functionKeyForm.controls["fktype"].value,
       currentPayCode: this.fk.PC
     };
 
@@ -251,6 +251,10 @@ export class FunctionKeyComponent implements OnInit{
         this.functionKeyForm.controls["PC"].setValue(data[0]);
       }
     );
+  }
+
+  openLevel1Dialog() : void {
+
   }
 
   /**  */
