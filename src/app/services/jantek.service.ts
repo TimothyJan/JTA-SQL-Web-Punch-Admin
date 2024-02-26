@@ -114,6 +114,7 @@ export class JantekService {
   /** Https request to get list of pay codes */
   getPayCodes(fktype: number): Observable<PCList> {
     switch(fktype) {
+      /** "HC" - Hourly Calculated (excluding pacyode 0) */
       case 16: {
         const options = {
           params: {
@@ -126,6 +127,7 @@ export class JantekService {
         };
         return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp`, options);
       }
+      /** "HNC" - Hourly non-calculated (employee enters hour value) */
       case 17: {
         const options = {
           params: {
@@ -138,6 +140,7 @@ export class JantekService {
         };
         return this.http.get<PCList>(`${apiRoot}/swp_GetPcList.asp`, options);
       }
+      /** "ED" - Earning/Deduction code (employee enters dollar amount) */
       case 20: {
         const options = {
           params: {
