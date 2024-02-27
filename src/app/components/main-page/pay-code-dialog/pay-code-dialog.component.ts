@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PayCode } from '../../../models/pay-code';
 import { JantekService } from '../../../services/jantek.service';
@@ -49,7 +49,7 @@ export class PayCodeDialogComponent implements OnInit{
     this._dialogRef.close(this.payCodeSelected);
   }
 
-  /** Close dialog */
+  /** Close dialog and sends previous code input as selction */
   closePayCodeDialog(): void {
     this._dialogRef.close(this.data.currentPayCode);
   }

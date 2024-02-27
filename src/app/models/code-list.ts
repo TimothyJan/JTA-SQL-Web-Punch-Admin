@@ -1,4 +1,4 @@
-export interface LevelList {
+export interface CodeList {
   "allcount": number;
   "list": [];
   "status": string

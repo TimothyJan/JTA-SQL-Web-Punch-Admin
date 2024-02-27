@@ -6,7 +6,7 @@ import { PunchConfig } from '../models/punch-config';
 import { FunctionKey } from '../models/function-key';
 import { PayCode } from '../models/pay-code';
 import { PCList } from '../models/pc-list';
-import { LevelList } from '../models/level-list';
+import { CodeList } from '../models/code-list';
 
 const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 
@@ -15,6 +15,65 @@ const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 })
 export class JantekService {
   isAuthenticatedChange: Subject<boolean> = new Subject<boolean>();
+  // punchConfiguration: PunchConfig = {
+  //   "status": "OK",
+  //   "logintype": 1,
+  //   "clocktype": 1,
+  //   "checklo": 0,
+  //   "closetable": 2,
+  //   "lunchlock": 1,
+  //   "lunchlen": 30,
+  //   "breaklock": 0,
+  //   "breaklen": 0,
+  //   "fk1": {
+  //     "fktype": 18,
+  //     "caption": "View Last Punch",
+  //     "msg1": "",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 0
+  //   },
+  //   "fk2": {
+  //     "fktype": 19,
+  //     "caption": "View Total Hour",
+  //     "msg1": "",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 0
+  //   },
+  //   "fk3": {
+  //     "fktype": 5,
+  //     "caption": "Company Change",
+  //     "msg1": "Enter Company",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 0
+  //   },
+  //   "fk4": {
+  //     "fktype": 16,
+  //     "caption": "Hour Entry",
+  //     "msg1": "Enter Hour",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 1
+  //   },
+  //   "fk5": {
+  //     "fktype": 17,
+  //     "caption": "Tip Entry",
+  //     "msg1": "Enter Tip",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 30
+  //   },
+  //   "fk6": {
+  //     "fktype": 20,
+  //     "caption": "Calculated Pay Code",
+  //     "msg1": "",
+  //     "msg2": "",
+  //     "msg3": "",
+  //     "PC": 24
+  //   }
+
   punchConfiguration: PunchConfig = {
     "status": "OK",
     "logintype": 1,
@@ -26,52 +85,52 @@ export class JantekService {
     "breaklock": 0,
     "breaklen": 0,
     "fk1": {
-      "fktype": 18,
-      "caption": "View Last Punch",
-      "msg1": "",
+      "fktype": 7,
+      "caption": "L3 change",
+      "msg1": "L3",
       "msg2": "",
       "msg3": "",
       "PC": 0
     },
     "fk2": {
-      "fktype": 19,
-      "caption": "View Total Hour",
-      "msg1": "",
-      "msg2": "",
+      "fktype": 8,
+      "caption": "L1, L2 change",
+      "msg1": "L1",
+      "msg2": "L2",
       "msg3": "",
       "PC": 0
     },
     "fk3": {
-      "fktype": 5,
-      "caption": "Company Change",
-      "msg1": "Enter Company",
-      "msg2": "",
+      "fktype": 9,
+      "caption": "L1, L3 change",
+      "msg1": "L1",
+      "msg2": "L3",
       "msg3": "",
       "PC": 0
     },
     "fk4": {
-      "fktype": 16,
-      "caption": "Hour Entry",
-      "msg1": "Enter Hour",
-      "msg2": "",
+      "fktype": 10,
+      "caption": "L2, L3 change",
+      "msg1": "L2",
+      "msg2": "L3",
       "msg3": "",
       "PC": 1
     },
     "fk5": {
-      "fktype": 17,
-      "caption": "Tip Entry",
-      "msg1": "Enter Tip",
-      "msg2": "",
-      "msg3": "",
-      "PC": 30
+      "fktype": 11,
+      "caption": "L1, L2, L3 change",
+      "msg1": "L1",
+      "msg2": "L2",
+      "msg3": "L3",
+      "PC": 0
     },
     "fk6": {
-      "fktype": 20,
-      "caption": "Calculated Pay Code",
-      "msg1": "",
+      "fktype": 16,
+      "caption": "Hour Entry",
+      "msg1": "Hour",
       "msg2": "",
       "msg3": "",
-      "PC": 24
+      "PC": 1
     }
   };
 
@@ -161,7 +220,7 @@ export class JantekService {
   }
 
   /** Https request to get list of level 1 codes */
-  getLevel1Codes(): Observable<LevelList> {
+  getLevel1Codes(): Observable<CodeList> {
     const options = {
       params: {
         Company: "TIMOTHYPROJECT",
@@ -174,7 +233,7 @@ export class JantekService {
   }
 
   /** Https request to get list of level 1 codes */
-  getLevel2Codes(): Observable<LevelList> {
+  getLevel2Codes(): Observable<CodeList> {
     const options = {
       params: {
         Company: "TIMOTHYPROJECT",
@@ -187,7 +246,7 @@ export class JantekService {
   }
 
   /** Https request to get list of level 1 codes */
-  getLevel3Codes(): Observable<LevelList> {
+  getLevel3Codes(): Observable<CodeList> {
     const options = {
       params: {
         Company: "TIMOTHYPROJECT",
