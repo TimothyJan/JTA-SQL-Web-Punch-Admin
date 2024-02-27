@@ -15,7 +15,8 @@ const apiRoot = "http://201.12.20.40/timothy_jan/sqlwebpunch";
 })
 export class JantekService {
   isAuthenticatedChange: Subject<boolean> = new Subject<boolean>();
-  // punchConfiguration: PunchConfig = {
+  punchConfiguration: PunchConfig;
+  // {
   //   "status": "OK",
   //   "logintype": 1,
   //   "clocktype": 1,
@@ -73,66 +74,7 @@ export class JantekService {
   //     "msg3": "",
   //     "PC": 24
   //   }
-
-  punchConfiguration: PunchConfig = {
-    "status": "OK",
-    "logintype": 1,
-    "clocktype": 1,
-    "checklo": 0,
-    "closetable": 2,
-    "lunchlock": 1,
-    "lunchlen": 30,
-    "breaklock": 0,
-    "breaklen": 0,
-    "fk1": {
-      "fktype": 7,
-      "caption": "L3 change",
-      "msg1": "L3",
-      "msg2": "",
-      "msg3": "",
-      "PC": 0
-    },
-    "fk2": {
-      "fktype": 8,
-      "caption": "L1, L2 change",
-      "msg1": "L1",
-      "msg2": "L2",
-      "msg3": "",
-      "PC": 0
-    },
-    "fk3": {
-      "fktype": 9,
-      "caption": "L1, L3 change",
-      "msg1": "L1",
-      "msg2": "L3",
-      "msg3": "",
-      "PC": 0
-    },
-    "fk4": {
-      "fktype": 10,
-      "caption": "L2, L3 change",
-      "msg1": "L2",
-      "msg2": "L3",
-      "msg3": "",
-      "PC": 1
-    },
-    "fk5": {
-      "fktype": 11,
-      "caption": "L1, L2, L3 change",
-      "msg1": "L1",
-      "msg2": "L2",
-      "msg3": "L3",
-      "PC": 0
-    },
-    "fk6": {
-      "fktype": 16,
-      "caption": "Hour Entry",
-      "msg1": "Hour",
-      "msg2": "",
-      "msg3": "",
-      "PC": 1
-    }
-  };
+  // }
 
   /** DEMO ONLY */
   demoAdminName:string = "201";
@@ -149,10 +91,10 @@ export class JantekService {
     if(form.username == this.demoAdminName && form.password == this.demoAdminPassword) {
       this.isAuthenticatedChange.next(true);
       this._alertService.openSnackBar("Login Successful");
-      // get punch configuration
-      // this.getPunchConfiguration().subscribe(
-      //   data => this.punchConfiguration = { ...data}
-      // );
+      // Get punch configuration
+      this.getPunchConfiguration().subscribe(
+        data => this.punchConfiguration = { ...data}
+      );
       return true;
     }
     this._alertService.openSnackBar("Incorrect Login");
