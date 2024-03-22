@@ -60,15 +60,6 @@
         <mat-form-field>
           <input matInput formControlName="msg1">
         </mat-form-field>
-
-        <button
-          *ngIf="!msg1Disabled"
-          mat-icon-button color="primary"
-          type="button"
-          (click)="openCodeMsg1Dialog()"
-          aria-label="Msg Code 1 Search">
-          <mat-icon>search</mat-icon>
-        </button>
         <div *ngIf="(functionKeyForm.controls['msg1'].dirty || functionKeyForm.controls['msg1'].touched)">
           <div *ngIf="functionKeyForm.controls['msg1'].errors?.['required']">
             <mat-error>Message #1 is required.</mat-error>
@@ -85,14 +76,6 @@
         <mat-form-field>
           <input matInput formControlName="msg2">
         </mat-form-field>
-        <button
-          *ngIf="!msg2Disabled"
-          mat-icon-button color="primary"
-          type="button"
-          (click)="openCodeMsg2Dialog()"
-          aria-label="Msg Code 2 Search">
-          <mat-icon>search</mat-icon>
-        </button>
         <div *ngIf="(functionKeyForm.controls['msg2'].dirty || functionKeyForm.controls['msg2'].touched)">
           <div *ngIf="functionKeyForm.controls['msg2'].errors?.['required']">
             <mat-error>Message #2 is required.</mat-error>
@@ -109,14 +92,6 @@
         <mat-form-field>
           <input matInput formControlName="msg3">
         </mat-form-field>
-        <button
-          *ngIf="!msg3Disabled"
-          mat-icon-button color="primary"
-          type="button"
-          (click)="openCodeMsg3Dialog()"
-          aria-label="Msg Code 3 Search">
-          <mat-icon>search</mat-icon>
-        </button>
         <div *ngIf="(functionKeyForm.controls['msg3'].dirty || functionKeyForm.controls['msg3'].touched)">
           <div *ngIf="functionKeyForm.controls['msg3'].errors?.['required']">
             <mat-error>Message #3 is required.</mat-error>

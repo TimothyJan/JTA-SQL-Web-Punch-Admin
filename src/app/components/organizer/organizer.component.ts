@@ -7,7 +7,7 @@ import { JantekService } from '../../services/jantek.service';
   styleUrl: './organizer.component.css'
 })
 export class OrganizerComponent implements OnInit{
-  isAuthenticated: boolean = true;
+  isAuthenticated: boolean = false;
   _authSubscription: any;
 
   constructor(
